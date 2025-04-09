@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Item{
+  id Int @id @default(autoincrement()) @map("_id")
+  itemName String
+  description String?
+  Unit String @default("Unit")
+  //Relation
+  QuotationItems QuotationItem[]
+}
+model Quotation{
+  id Int @id @default(autoincrement()) @map("_id")
+  date DateTime @default(now())
+  quotationStatus QuotationStatus @default(Pending)
+  customerStatus CustomerStatus @default(Pending) 
+  //Relation
+  customer Customer? @relation(fields: [customerid], references: [id], onDelete: Cascade)
+  customerid Int?
+  invoice Invoice? @relation(fields: [invoiceid], references: [id], onDelete: Cascade)
+  invoiceid Int? @unique
+  QuotationItems QuotationItem[]
+}
+model QuotationItem{
+  id Int @id @default(autoincrement()) @map("_id")
+  remark String?
+  quantity Int @default(1)
+  price Decimal @default(0)
+  //Relation
+  item Item @relation(fields: [itemid], references: [id], onDelete: Cascade)
+  itemid Int
+  quotation Quotation @relation(fields: [quotationid], references: [id], onDelete: Cascade)
+  quotationid Int
+}
+model Customer{
+  id Int @id @default(autoincrement()) @map("_id")
+  customerName String @unique
+  address String?
+  phone String?
+  created DateTime @default(now())
+  //Relation
+  Quotations Quotation[]
+  Invoices Invoice[]
+}
+model Invoice{
+  id Int @id @default(autoincrement()) @map("_id")
+  date DateTime @default(now())
+  dueDate DateTime @default(now())
+  amount Decimal
+  amountPaid Decimal @default(0)
+  amountDue Decimal @default(0)
+  invoiceStatus InvoiceStatus @default(Pending)
+  //Relation
+  customer Customer? @relation(fields: [customerid], references: [id], onDelete: Cascade)
+  customerid Int?
+  quotation Quotation?
+}
+enum QuotationStatus {
+  Approved
+  Pending
+  Revise
+  Rejected
+}
+enum CustomerStatus {
+  Approved
+  Pending
+  Revise
+  Rejected
+  Sent
+}
+enum InvoiceStatus {
+  Overdue
+  Paid
+  Pending
+}

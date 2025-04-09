@@ -1,0 +1,99 @@
+.receiptContainer {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 2px dashed #ccc;
+    background-color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .header h2 {
+    margin-bottom: 10px;
+    color: #222;
+  }
+  
+  .customerInfo {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .itemTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+  }
+  
+  .itemTable th,
+  .itemTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .itemTable th {
+    background-color: #f0f0f0;
+    color: #000;
+  }
+  
+  .description {
+    font-size: 0.85em;
+    color: #666;
+  }
+  
+  .remark {
+    font-size: 0.85em;
+    font-style: italic;
+    color: #888;
+  }
+  
+  .noItems {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+  }
+  
+  .totals {
+    text-align: right;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  
+  .terms {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    margin-top: 20px;
+  }
+  
+  .terms h4 {
+    margin-bottom: 10px;
+  }
+  
+  .footer {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .backButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #444;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .backButton:hover {
+    background-color: #222;
+  }
+  

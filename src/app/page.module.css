@@ -1,168 +1,133 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
-}
-
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
-}
-
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
-}
-
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
-  display: flex;
-  gap: 16px;
-}
-
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-}
-
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 158px;
-}
-
-.footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
-}
-
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer img {
-  flex-shrink: 0;
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-}
-
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
+.container {
+    display: flex;
     flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-  }
+    width: 100%;
+    margin-top: 20px;
+}
+.containerTable {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+.row {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.column {
+    display: flex;
+    justify-content: space-between;
+}
+
+.labelGroup {
+    width: 200px;
+}
+
+.inputGroup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fullWidthGroup {
+    display: flex;
+    align-items: center;
+    width: 75%;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.input {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.inputTwo {
+    width: 500px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.button, .buttonEdit, .buttonCancel, .buttonPage, .buttonDelete {
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button {
+    padding: 10px 10px;
+    background-color: rgb(225, 124, 0);
+}
+.buttonEdit {
+    padding: 10px 10px;
+    background-color: #0d6efd;
+}
+.buttonDelete {
+    padding: 10px 10px;
+    background-color: #dc3545;
+}
+.buttonCancel {
+    padding: 10px 20px;
+    background-color: #4e4e4e;
+}
+.buttonPage {
+    padding: 10px 10px;
+    background-color: rgb(225, 124, 0);
+}
+.button:hover, .buttonCancel:hover, .buttonPage:hover {
+    background-color: rgb(215, 95, 0);
+}
+.buttonEdit:hover {
+    background-color: #0b5ed7;
+}
+.buttonDelete:hover {
+    background-color: #c82333;
+}
+.activePage {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+.select {
+    padding: 8px 12px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 150px;
+    transition: border-color 0.3s ease;
+}
+.select:focus {
+    border-color: #007bff;
+}
+.term {
+    border: 1px solid black;
+    width: 165px;
+    padding: 0 5px;
+    margin-left: 15px;
+    margin-bottom: -15px;
+    background-color: white;
+    z-index: 1;
+    position: relative;
+}
+.termText {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+}
+.tableHead{
+    display: grid;
+    grid-template-columns: 50px 1fr 100px 100px 150px 150px 150px;
+    border: solid black 1px;
 }
